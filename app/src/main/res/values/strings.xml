@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Notatnik</string>
+    <string name="title_underline">Title underline</string>
 </resources>
