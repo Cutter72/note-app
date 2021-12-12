@@ -3,4 +3,10 @@
     <string name="title_underline">Title underline</string>
     <string name="edit_content_here">Edit content here…</string>
     <string name="edit_title_here">Edit title here…</string>
+    <string name="save">Save</string>
+    <string name="delete">Delete</string>
+    <string name="create_new">Create new</string>
+    <string name="note_saved">Note saved!</string>
+    <string name="note_deleted">Note deleted!</string>
+    <string name="note_created">Note created!</string>
 </resources>

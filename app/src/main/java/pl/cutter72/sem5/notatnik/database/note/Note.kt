@@ -1,6 +1,5 @@
 package pl.cutter72.sem5.notatnik.database.note
 
-import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
@@ -9,10 +8,9 @@ import androidx.room.PrimaryKey
  */
 @Entity
 data class Note(
+    var title: String = "",
+    var content: String = ""
+) {
     @PrimaryKey(autoGenerate = true)
-    val id: Int = 0,
-    @ColumnInfo
-    val title: String,
-    @ColumnInfo
-    val content: String
-)
+    var id: Int = 0
+}
