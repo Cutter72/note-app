@@ -12,6 +12,7 @@ import pl.cutter72.sem5.notatnik.databinding.FragmentNoteListBinding
 
 class NoteListFragment() : Fragment() {
     private lateinit var binding: FragmentNoteListBinding
+    private val MAX_TEXT_LENGTH: Int = 48
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,11 +48,18 @@ class NoteListFragment() : Fragment() {
         note: Note,
         checkBox: CheckBox
     ) {
-        val fullText = "${note.title}:\n${note.content}"
-        checkBox.setText(fullText)
+        checkBox.setText(prepareNoteText(note))
         checkBox.layoutParams = binding.noteList.layoutParams
         setLockClickListener(checkBox)
         setOnclickListener(checkBox.currentTextColor, checkBox)
+    }
+
+    private fun prepareNoteText(note: Note): String {
+        val text = "${note.title}:\n${note.content.replace("\n", "↵")}"
+        if (text.length > MAX_TEXT_LENGTH) {
+            return text.subSequence(0, MAX_TEXT_LENGTH) as String
+        }
+        return text
     }
 
     private fun setLockClickListener(checkBox: CheckBox) {

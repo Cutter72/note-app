@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
                 true
             }
             R.id.action_edit -> {
-                editNotes()
+                startEditFragment()
                 true
             }
             else -> super.onOptionsItemSelected(item)
@@ -75,12 +75,11 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             if (notesToDelete.isEmpty()) {
-                runOnUiThread {
-                    showToast(R.string.nothing_to_delete)
-                }
+                showToast(R.string.nothing_to_delete)
                 return@launch
             }
-            dbDeleteNotes(notesToDelete)
+            db.noteDao().deleteNotes(notesToDelete)
+            showToast(R.string.deleted)
             listNotes()
         }
     }
@@ -91,10 +90,8 @@ class MainActivity : AppCompatActivity() {
         }
         note = Note()
         GlobalScope.launch {
-            dbCreate(note)
-            runOnUiThread {
-                editNotes()
-            }
+            note.id = db.noteDao().create(note)
+            startEditFragment()
         }
     }
 
@@ -102,12 +99,11 @@ class MainActivity : AppCompatActivity() {
         GlobalScope.launch {
             if (notePendingToSave.isPreparedToSave()) {
                 if (notePendingToSave.id == 0L) {
-                    dbCreate(notePendingToSave)
-                    runOnUiThread {
-                        showToast(R.string.saved)
-                    }
+                    note.id = db.noteDao().create(notePendingToSave)
+                    showToast(R.string.saved)
                 } else {
-                    dbUpdate(notePendingToSave)
+                    db.noteDao().update(notePendingToSave)
+                    showToast(R.string.updated)
                 }
                 runOnUiThread {
                     refreshEditFragment()
@@ -116,78 +112,58 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private fun dbDelete(notePendingToDelete: Note) {
-        db.noteDao().delete(notePendingToDelete)
-        runOnUiThread {
-            showToast(R.string.deleted)
-        }
-    }
-
-    private fun dbDeleteNotes(notesPendingToDelete: List<Note>) {
-        db.noteDao().deleteNotes(notesPendingToDelete)
-        runOnUiThread {
-            showToast(R.string.deleted)
-        }
-    }
-
-    private fun dbCreate(notePendingToSave: Note) {
-        note.id = db.noteDao().create(notePendingToSave)
-    }
-
-    private fun dbUpdate(notePendingToSave: Note) {
-        db.noteDao().update(notePendingToSave)
-        runOnUiThread {
-            showToast(R.string.updated)
-        }
-    }
-
-    private fun editNotes() {
-        startEditFragment()
-    }
-
     private fun listNotes() {
         GlobalScope.launch {
-            val list = db.noteDao().readAll()
-            NoteListFragment.list = list
-            runOnUiThread {
-                startListFragment()
-            }
+            loadAllNotes()
+            startListFragment()
         }
+    }
+
+    private fun loadAllNotes() {
+        val list = db.noteDao().readAll()
+        NoteListFragment.list = list
     }
 
     fun startEditFragment() {
-        menu.getItem(DELETE_ACTION_INDEX).isEnabled = false
-//        val menu = findViewById<>(R.menu.menu_main)
-        val manager = supportFragmentManager
-        val transaction = manager.beginTransaction()
-        transaction.replace(
-            R.id.fragment_container,
-            NoteEditFragment(),
-            NoteEditFragment::class.simpleName
-        )
-        transaction.addToBackStack(null)
-        transaction.commit()
+        runOnUiThread {
+            menu.getItem(DELETE_ACTION_INDEX).isEnabled = false
+            val manager = supportFragmentManager
+            val transaction = manager.beginTransaction()
+            transaction.replace(
+                R.id.fragment_container,
+                NoteEditFragment(),
+                NoteEditFragment::class.simpleName
+            )
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
     }
 
     private fun startListFragment() {
-        menu.getItem(DELETE_ACTION_INDEX).isEnabled = true
-        val manager = supportFragmentManager
-        val transaction = manager.beginTransaction()
-        transaction.replace(
-            R.id.fragment_container,
-            NoteListFragment(),
-            NoteListFragment::class.simpleName
-        )
-        transaction.addToBackStack(null)
-        transaction.commit()
+        runOnUiThread {
+            menu.getItem(DELETE_ACTION_INDEX).isEnabled = true
+            val manager = supportFragmentManager
+            val transaction = manager.beginTransaction()
+            transaction.replace(
+                R.id.fragment_container,
+                NoteListFragment(),
+                NoteListFragment::class.simpleName
+            )
+            transaction.addToBackStack(null)
+            transaction.commit()
+        }
     }
 
     private fun refreshEditFragment() {
-        supportFragmentManager.findFragmentByTag(NoteEditFragment::class.simpleName)?.onResume()
+        runOnUiThread {
+            supportFragmentManager.findFragmentByTag(NoteEditFragment::class.simpleName)?.onResume()
+        }
     }
 
     private fun showToast(@StringRes stringResId: Int) {
-        Toast.makeText(this, stringResId, Toast.LENGTH_SHORT).show()
+        runOnUiThread {
+            Toast.makeText(this, stringResId, Toast.LENGTH_SHORT).show()
+        }
     }
 
     companion object {
