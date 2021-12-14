@@ -100,10 +100,10 @@ class MainActivity : AppCompatActivity() {
             if (notePendingToSave.isPreparedToSave()) {
                 if (notePendingToSave.id == 0L) {
                     note.id = db.noteDao().create(notePendingToSave)
-                    showToast(R.string.saved)
+                    showToast(R.string.created)
                 } else {
                     db.noteDao().update(notePendingToSave)
-                    showToast(R.string.updated)
+                    showToast(R.string.saved)
                 }
                 runOnUiThread {
                     refreshEditFragment()

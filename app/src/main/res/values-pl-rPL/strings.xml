@@ -10,7 +10,6 @@
     <string name="saved">Zapisano!</string>
     <string name="deleted">Usunięto!</string>
     <string name="created">Stworzono!</string>
-    <string name="updated">Zaaktualizowano!</string>
     <string name="note_list">Lista notatek</string>
     <string name="long_click_to_edit_note">Przytrzymaj aby edytować notatkę</string>
     <string name="nothing_to_delete">Nie ma nic do usunięcia!</string>
