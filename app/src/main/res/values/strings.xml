@@ -6,7 +6,11 @@
     <string name="save">Save</string>
     <string name="delete">Delete</string>
     <string name="create_new">Create new</string>
-    <string name="note_saved">Note saved!</string>
-    <string name="note_deleted">Note deleted!</string>
-    <string name="note_created">Note created!</string>
+    <string name="saved">Saved!</string>
+    <string name="deleted">Deleted!</string>
+    <string name="created">Created!</string>
+    <string name="test">test</string>
+    <string name="updated">Updated!</string>
+    <string name="note_list">Note list</string>
+    <string name="long_click_to_edit_note">Long click to edit note</string>
 </resources>

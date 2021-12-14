@@ -8,9 +8,35 @@ import androidx.room.PrimaryKey
  */
 @Entity
 data class Note(
+    @PrimaryKey(autoGenerate = true)
+    var id: Long = 0,
     var title: String = "",
     var content: String = ""
 ) {
-    @PrimaryKey(autoGenerate = true)
-    var id: Int = 0
+
+    fun isBlank(): Boolean {
+        return title.isBlank() && content.isBlank()
+    }
+
+    fun isPreparedToSave(): Boolean {
+        if (isBlank()) {
+            return false
+        }
+        prepareToSave()
+        return true
+    }
+
+    fun clear() {
+        title = ""
+        content = ""
+    }
+
+    private fun prepareToSave() {
+        if (title.isBlank()) {
+            title = "Empty title"
+        }
+        if (content.isBlank()) {
+            content = "Empty content"
+        }
+    }
 }

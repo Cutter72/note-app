@@ -11,7 +11,7 @@ import pl.cutter72.sem5.notatnik.database.note.NoteDao
  * https://developer.android.com/training/data-storage/room/
  * https://developer.android.com/codelabs/android-room-with-a-view-kotlin#7
  */
-@Database(entities = [Note::class], version = 1)
+@Database(entities = [Note::class], version = 3)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun noteDao(): NoteDao
 
@@ -29,7 +29,7 @@ abstract class AppDatabase : RoomDatabase() {
                     context.applicationContext,
                     AppDatabase::class.java,
                     "notatnik-database"
-                ).build()
+                ).fallbackToDestructiveMigration().build()
                 INSTANCE = instance
                 // return instance
                 instance

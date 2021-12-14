@@ -2,10 +2,10 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/action_create_new"
-        android:icon="@android:drawable/ic_menu_add"
+        android:id="@+id/action_edit"
+        android:icon="@android:drawable/ic_menu_edit"
+        android:title="@string/test"
         android:orderInCategory="0"
-        android:title="@string/create_new"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_save"
@@ -14,13 +14,21 @@
         android:orderInCategory="0"
         app:showAsAction="ifRoom" />
     <item
+        android:id="@+id/action_add"
+        android:icon="@android:drawable/ic_menu_add"
+        android:orderInCategory="0"
+        android:title="@string/create_new"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_list_notes"
+        android:icon="@android:drawable/ic_menu_recent_history"
+        android:title="@string/note_list"
+        android:orderInCategory="0"
+        app:showAsAction="ifRoom" />
+    <item
         android:id="@+id/action_delete"
         android:icon="@android:drawable/ic_menu_delete"
         android:title="@string/delete"
-        android:orderInCategory="0" />
-    <item
-        android:id="@+id/action_test"
-        android:icon="@android:drawable/ic_menu_delete"
-        android:title="@string/delete"
-        android:orderInCategory="0" />
+        android:orderInCategory="0"
+        app:showAsAction="ifRoom" />
 </menu>
