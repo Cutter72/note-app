@@ -35,6 +35,7 @@
         android:layout_height="0dp"
         android:text="@string/test"
         android:gravity="center"
+        android:visibility="invisible"
         app:layout_constraintBottom_toTopOf="@+id/content_text"
         app:layout_constraintEnd_toStartOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="parent"

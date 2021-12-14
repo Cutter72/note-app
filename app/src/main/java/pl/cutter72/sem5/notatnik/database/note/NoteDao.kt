@@ -12,9 +12,6 @@ interface NoteDao {
     @Insert(onConflict = REPLACE)
     fun create(note: Note): Long
 
-//    @Query("SELECT * FROM note WHERE id = :id")
-//    fun read(id: Int): Note
-
     @Update
     fun update(note: Note)
 
@@ -26,7 +23,4 @@ interface NoteDao {
 
     @Query("SELECT * FROM note")
     fun readAll(): List<Note>
-
-//    @Query("SELECT * FROM note WHERE title LIKE :title LIMIT 1")
-//    fun findByTitle(title: String): Note
 }

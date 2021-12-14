@@ -13,4 +13,5 @@
     <string name="updated">Updated!</string>
     <string name="note_list">Note list</string>
     <string name="long_click_to_edit_note">Long click to edit note</string>
+    <string name="nothing_to_delete">Nothing to delete!</string>
 </resources>

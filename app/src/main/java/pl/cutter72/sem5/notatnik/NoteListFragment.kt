@@ -23,12 +23,17 @@ class NoteListFragment() : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentNoteListBinding.inflate(layoutInflater)
-        updateUi()
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        updateUi()
     }
 
     fun updateUi() {
         binding.noteList.removeAllViews()
+        MainActivity.notesMap.clear()
         for (note in list) {
             val checkBox = CheckBox(context)
             prepareCheckBox(note, checkBox)
@@ -42,7 +47,7 @@ class NoteListFragment() : Fragment() {
         note: Note,
         checkBox: CheckBox
     ) {
-        val fullText = "${note.id}-${note.title}:\n${note.content}"
+        val fullText = "${note.title}:\n${note.content}"
         checkBox.setText(fullText)
         checkBox.layoutParams = binding.noteList.layoutParams
         setLockClickListener(checkBox)

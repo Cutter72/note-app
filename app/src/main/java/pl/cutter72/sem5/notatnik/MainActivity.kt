@@ -75,6 +75,9 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             if (notesToDelete.isEmpty()) {
+                runOnUiThread {
+                    showToast(R.string.nothing_to_delete)
+                }
                 return@launch
             }
             dbDeleteNotes(notesToDelete)
