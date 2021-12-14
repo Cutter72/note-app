@@ -5,6 +5,8 @@ import androidx.room.PrimaryKey
 
 /**
  * https://developer.android.com/training/data-storage/room/
+ *
+ * @author Paweł Drelich, WSB Gdańsk, indeks: 54589, grupa: ININ5_PR1.1
  */
 @Entity
 data class Note(

@@ -10,8 +10,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import pl.cutter72.sem5.notatnik.databinding.FragmentNoteEditBinding
 
+/**
+ * @author Paweł Drelich, WSB Gdańsk, indeks: 54589, grupa: ININ5_PR1.1
+ */
 class NoteEditFragment : Fragment() {
-
 
     private lateinit var binding: FragmentNoteEditBinding
 

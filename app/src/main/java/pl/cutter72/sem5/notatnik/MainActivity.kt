@@ -16,6 +16,8 @@ import pl.cutter72.sem5.notatnik.databinding.ActivityMainBinding
 
 /**
  * https://developer.android.com/guide/topics/ui/menus
+ *
+ * @author Paweł Drelich, WSB Gdańsk, indeks: 54589, grupa: ININ5_PR1.1
  */
 class MainActivity : AppCompatActivity() {
 

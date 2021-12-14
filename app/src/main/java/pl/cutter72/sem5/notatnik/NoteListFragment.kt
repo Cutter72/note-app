@@ -10,6 +10,9 @@ import androidx.fragment.app.Fragment
 import pl.cutter72.sem5.notatnik.database.note.Note
 import pl.cutter72.sem5.notatnik.databinding.FragmentNoteListBinding
 
+/**
+ * @author Paweł Drelich, WSB Gdańsk, indeks: 54589, grupa: ININ5_PR1.1
+ */
 class NoteListFragment() : Fragment() {
     private lateinit var binding: FragmentNoteListBinding
     private val MAX_TEXT_LENGTH: Int = 48

@@ -10,6 +10,8 @@ import pl.cutter72.sem5.notatnik.database.note.NoteDao
 /**
  * https://developer.android.com/training/data-storage/room/
  * https://developer.android.com/codelabs/android-room-with-a-view-kotlin#7
+ *
+ * @author Paweł Drelich, WSB Gdańsk, indeks: 54589, grupa: ININ5_PR1.1
  */
 @Database(entities = [Note::class], version = 3)
 abstract class AppDatabase : RoomDatabase() {
