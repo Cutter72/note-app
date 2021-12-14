@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Notatnik</string>
+    <string name="title_underline">Podkreślenie tytułu</string>
+    <string name="edit_content_here">Edytuj zawartość tutaj…</string>
+    <string name="edit_title_here">Edytuj tytuł tutaj…</string>
+    <string name="save">Zapisz</string>
+    <string name="delete">Usuń</string>
+    <string name="create_new">Stwórz nową</string>
+    <string name="saved">Zapisano!</string>
+    <string name="deleted">Usunięto!</string>
+    <string name="created">Stworzono!</string>
+    <string name="updated">Zaaktualizowano!</string>
+    <string name="note_list">Lista notatek</string>
+    <string name="long_click_to_edit_note">Przytrzymaj aby edytować notatkę</string>
+    <string name="nothing_to_delete">Nie ma nic do usunięcia!</string>
+</resources>
